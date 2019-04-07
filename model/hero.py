@@ -10,17 +10,17 @@ class Hero(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(100))
-    thumbnail_url = Column(Date)
+    thumbnail_url = Column(String(100))
 
     def __repr__(self):
         return "<User(id='%s', name='%s', thumbnail_url='%s')>" % \
                (self.id, self.name, self.thumbnail_url)
 
     @staticmethod
-    def to_model(contact):
+    def to_model(hero):
         return Hero(
-            name=contact['name'],
-            thumbnail_url=contact['thumbnail_url']
+            name=hero['name'],
+            thumbnail_url=hero['thumbnail_url']
         )
 
     def to_dict(self):

@@ -1,6 +1,6 @@
   /hero:
     get:
-      tags: [Heroes]
+      tags: [Hero]
       summary: Get all heroes
       parameters:
         - name: limit
@@ -10,15 +10,15 @@
           minimum: 0
           default: 100
       responses:
-              200:
-                description: Return heroes
-                schema:
-                  type: object
-                  properties:
-                    heroes:
-                      type: array
-                      items:
-                        $ref: '#/definitions/HeroResult'
+          200:
+            description: Return heroes
+            schema:
+              type: object
+              properties:
+                heroes:
+                  type: array
+                  items:
+                    $ref: '#/definitions/HeroResult'
     post:
       tags: [Hero]
       summary: Create a Hero

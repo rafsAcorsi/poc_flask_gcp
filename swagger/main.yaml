@@ -11,5 +11,13 @@ basePath: "/api"
 
 paths:
 {% include 'hero.yaml' %}
+parameters:
+  id:
+    name: id
+    description: Unique identifier
+    in: path
+    type: string
+    required: true
+    pattern: "^[a-zA-Z0-9-]+$"
 definitions:
 {% include 'hero_definitions.yaml' %}

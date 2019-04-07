@@ -18,7 +18,7 @@
       thumbnail_url:
         type: string
         description: Hero Thumbnail
-        example: "marvel.com/iron_man.jpg"
+        example: "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg"
   HeroRequest:
     type: object
     required:
@@ -27,11 +27,11 @@
     properties:
       name:
         type: string
-        description: Contact's name
+        description: Hero's name
         example: "Iron Man"
         minLength: 1
         maxLength: 100
       thumbnail_url:
         type: string
         description: Hero Thumbnail
-        example: "marvel.com/iron_man.jpg"
+        example: "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg"

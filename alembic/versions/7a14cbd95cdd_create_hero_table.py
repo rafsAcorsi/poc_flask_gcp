@@ -1,16 +1,15 @@
-"""create contact table
+"""create hero table
 
-Revision ID: a242eb1145f9
+Revision ID: 7a14cbd95cdd
 Revises: 
-Create Date: 2019-04-01 14:13:39.601313
+Create Date: 2019-04-07 18:28:03.460153
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-
 # revision identifiers, used by Alembic.
-revision = 'a242eb1145f9'
+revision = '7a14cbd95cdd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,10 +20,10 @@ def upgrade():
         'Hero',
         sa.Column('id', sa.Integer()),
         sa.Column('name', sa.String(length=50), nullable=False),
-        sa.Column('birthday', sa.DateTime()),
+        sa.Column('thumbnail_url', sa.String(length=50), nullable=False),
         sa.PrimaryKeyConstraint('id')
     )
 
 
 def downgrade():
-    op.drop_table("account")
+    op.drop_table("Hero")

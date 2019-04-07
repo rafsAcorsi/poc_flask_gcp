@@ -1,4 +1,4 @@
-"""Service for contact."""
+"""Service for Hero."""
 from typing import List, Dict
 
 from main import db
@@ -12,6 +12,7 @@ class HeroService(Hero):
     @staticmethod
     def save(hero: Dict) -> Hero:
         hero = Hero.to_model(hero)
+        db.session.add(hero)
         db.session.commit()
         return hero.to_dict()
 
