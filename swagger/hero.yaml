@@ -1,0 +1,58 @@
+  /hero:
+    get:
+      tags: [Heroes]
+      summary: Get all heroes
+      parameters:
+        - name: limit
+          in: query
+          type: integer
+          format: int32
+          minimum: 0
+          default: 100
+      responses:
+              200:
+                description: Return heroes
+                schema:
+                  type: object
+                  properties:
+                    heroes:
+                      type: array
+                      items:
+                        $ref: '#/definitions/HeroResult'
+    post:
+      tags: [Hero]
+      summary: Create a Hero
+      parameters:
+        - name: hero
+          in: body
+          schema:
+            $ref: '#/definitions/HeroRequest'
+      responses:
+          200:
+            description: Return the saved hero
+            schema:
+              type: object
+              properties:
+                heroes:
+                  type: object
+                  $ref: '#/definitions/HeroResult'
+          401:
+            description: None object
+
+  /hero/{id}:
+    get:
+      tags: [Hero]
+      summary: Get Hero by Id
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+          200:
+            description: Return a hero
+            schema:
+              type: object
+              properties:
+                heroes:
+                  type: object
+                  $ref: '#/definitions/HeroResult'
+          404:
+            description: Hero not found

@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+gevent = "==1.4.0"
+ipython = "*"
+pysqlite3 = "*"
+
+[packages]
+connexion = {extras = ["swagger-ui"],version = "==2.2.0"}
+SQLAlchemy = "==1.2.14"
+Jinja2 = "==2.10"
+PyYAML = "==5.1"
+PyMySQL = "*"
+alembic = "*"
+flask-sqlalchemy = "*"
+flask-script = "*"
+
+[requires]
+python_version = "3.7"

@@ -1,0 +1,37 @@
+  HeroResult:
+    type: object
+    required:
+      - name
+      - thumbnail_url
+    properties:
+      id:
+        type: string
+        description: Unique identifier
+        example: "123"
+        readOnly: true
+      name:
+        type: string
+        description: Hero's name
+        example: "Iron Man"
+        minLength: 5
+        maxLength: 100
+      thumbnail_url:
+        type: string
+        description: Hero Thumbnail
+        example: "marvel.com/iron_man.jpg"
+  HeroRequest:
+    type: object
+    required:
+      - name
+      - thumbnail_url
+    properties:
+      name:
+        type: string
+        description: Contact's name
+        example: "Iron Man"
+        minLength: 1
+        maxLength: 100
+      thumbnail_url:
+        type: string
+        description: Hero Thumbnail
+        example: "marvel.com/iron_man.jpg"
