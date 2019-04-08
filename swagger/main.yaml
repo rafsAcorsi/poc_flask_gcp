@@ -11,6 +11,8 @@ basePath: "/api"
 
 paths:
 {% include 'hero.yaml' %}
+{% include 'villain.yaml' %}
+{% include 'universe.yaml' %}
 parameters:
   id:
     name: id
@@ -21,3 +23,5 @@ parameters:
     pattern: "^[a-zA-Z0-9-]+$"
 definitions:
 {% include 'hero_definitions.yaml' %}
+{% include 'villain_definitions.yaml' %}
+{% include 'universe_definitions.yaml' %}

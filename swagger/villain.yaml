@@ -1,0 +1,58 @@
+  /villain:
+    get:
+      tags: [Villain]
+      summary: Get all villain
+      parameters:
+        - name: limit
+          in: query
+          type: integer
+          format: int32
+          minimum: 0
+          default: 100
+      responses:
+          200:
+            description: Return villains
+            schema:
+              type: object
+              properties:
+                villains:
+                  type: array
+                  items:
+                    $ref: '#/definitions/VillainResult'
+    post:
+      tags: [Villain]
+      summary: Create a Villain
+      parameters:
+        - name: villain
+          in: body
+          schema:
+            $ref: '#/definitions/VillainPostRequest'
+      responses:
+          200:
+            description: Return the saved villains
+            schema:
+              type: object
+              properties:
+                villains:
+                  type: object
+                  $ref: '#/definitions/VillainResult'
+          401:
+            description: None object
+
+  /villain/{id}:
+    get:
+      tags: [Villain]
+      summary: Get Villain by Id
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+          200:
+            description: Return a villain
+            schema:
+              type: object
+              properties:
+                villain:
+                  type: object
+                  $ref: '#/definitions/VillainResult'
+          404:
+            description: Villain not found
