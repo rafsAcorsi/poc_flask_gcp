@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: Heros
+  title: Hero
   version: "0.0.1-ALPHA"
   description: Simple example how to use connexion + flask
 consumes:
