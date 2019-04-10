@@ -49,29 +49,7 @@ def run_migrations_offline():
 
 
 def get_url():
-    db_user = getenv("DB_USER")
-    db_pass = getenv("DB_PASS")
-    db_name = getenv("DB_NAME")
-    db_type = getenv('DB_TYPE', 'mysql+pymysql')
-    cloud_sql_instance_name = getenv("CLOUD_SQL_INSTANCE_NAME")
-    if db_type == 'sqlite':
-        return sqlalchemy.create_engine('sqlite:///test.db')
-    else:
-        return sqlalchemy.create_engine(
-            sqlalchemy.engine.url.URL(
-                drivername=db_type,
-                username=db_user,
-                password=db_pass,
-                database=db_name,
-                query={
-                    'unix_socket': '/cloudsql/{}'.format(
-                        cloud_sql_instance_name)
-                }
-            ),
-            pool_size=5,
-            max_overflow=2,
-            pool_timeout=30,  # 30 seconds
-            pool_recycle=1800)
+    return sqlalchemy.create_engine(getenv('DATABASE_URL'))
 
 
 def run_migrations_online():

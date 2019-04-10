@@ -9,8 +9,8 @@ class Villain(db.Model):
     __tablename__ = 'Villain'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(100))
-    thumbnail_url = Column(String(100))
+    name = Column(String(200))
+    thumbnail_url = Column(String(200))
 
     def __repr__(self):
         return "<User(id='%s', name='%s', thumbnail_url='%s')>" % \

@@ -9,9 +9,11 @@ help:
 	@echo ""
 	@echo "-- Help Menu"
 	@echo ""
-	@echo "   1. make clean                        - Clean all pyc and caches"
+	@echo "   1. make clean 			- Clean all pyc and caches"
 	@echo "   2. make run				- Run application locally"
-	@echo "   2. make seed				- Run initial seed"
+	@echo "   3. make seed				- Run initial seed"
+	@echo "   4. make shell 			- Run shell"
+	@echo "   5. make migrate 			- Run migrations"
 	@echo ""
 	@echo ""
 
@@ -34,3 +36,12 @@ run:
 .PHONY: seed
 seed:
 	pipenv run python manage.py seed
+
+
+.PHONY: shell
+shell:
+	pipenv run python manage.py shell
+
+.PHONY: migrate
+migrate:
+	pipenv run alembic upgrade head

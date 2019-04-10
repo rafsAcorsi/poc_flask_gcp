@@ -20,8 +20,8 @@ def upgrade():
     op.create_table(
         'Villain',
         sa.Column('id', sa.Integer()),
-        sa.Column('name', sa.String(length=50), nullable=False),
-        sa.Column('thumbnail_url', sa.String(length=50), nullable=False),
+        sa.Column('name', sa.String(length=200), nullable=False),
+        sa.Column('thumbnail_url', sa.String(length=200), nullable=False),
         sa.PrimaryKeyConstraint('id')
     )
 

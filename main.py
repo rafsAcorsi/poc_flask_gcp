@@ -7,7 +7,7 @@ from connexion import RestyResolver
 from flask_sqlalchemy import SQLAlchemy
 from jinja2 import FileSystemLoader
 from jinja2.environment import Environment
-
+from flask import request
 from config import config_by_name
 
 db = SQLAlchemy()
@@ -26,6 +26,16 @@ def create_app():
     )
     application = app.app
     db.init_app(application)
+
+    @application.before_request
+    def before_request():
+        function = request.endpoint.replace('/api.', '').split('_')
+        module = '.'.join(function[0:2])
+        arg = function[-1]
+        method = (__import__ (module, fromlist=[arg]))
+        if 'cache_info' in dir(getattr(method, arg)):
+            print(getattr(method, arg).cache_info())
+
     return app
 
 

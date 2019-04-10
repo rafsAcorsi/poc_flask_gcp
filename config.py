@@ -10,12 +10,16 @@ class Config:
     DEBUG = False
     URL_BASE = 'localhost'
     SWAGGER_UI = True
+    SQLALCHEMY_DATABASE_URI = getenv('DATABASE_URL', 'sqlite:///test.db')
 
 
 class DevelopmentConfig(Config):
     DEBUG = True
     AUTO_RELOAD = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
+    SQLALCHEMY_POOL_SIZE = 5
+    SQLALCHEMY_POOL_TIMEOUT = 30
+    SQLALCHEMY_POOL_RECYCLE = 1800
+    SQLALCHEMY_MAX_OVERFLOW = 2
 
 
 class TestingConfig(Config):
@@ -25,15 +29,8 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    DB_NAME = ''
-    PROJECT_ID = ''
-    INSTANCE_NAME = ''
-    DB_USER = ''
-    DB_PASS = ''
-    SQLALCHEMY_DATABASE_URI = (
-        f'mysql+mysqldb://{DB_USER}:{DB_PASS}@/{DB_NAME}?unix_socket='
-        f'/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}'
-    )
+    PROJECT_ID = getenv('PROJECT_ID')
+    INSTANCE_NAME = getenv('INSTANCE_NAME')
     SQLALCHEMY_POOL_SIZE = 5
     SQLALCHEMY_POOL_TIMEOUT = 30
     SQLALCHEMY_POOL_RECYCLE = 1800

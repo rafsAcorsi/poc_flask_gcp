@@ -1,4 +1,5 @@
 from typing import List, Tuple
+#from functools import lru_cache
 
 from flask import jsonify
 
@@ -6,6 +7,7 @@ from model.hero import Hero
 from services.hero_service import HeroService
 
 
+# @lru_cache(maxsize=64)
 def search(limit: int = 50) -> List[Hero]:
     response = [
         hero.to_dict()

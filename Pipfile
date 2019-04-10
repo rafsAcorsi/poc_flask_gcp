@@ -7,6 +7,9 @@ verify_ssl = true
 gevent = "==1.4.0"
 ipython = "*"
 pysqlite3 = "*"
+coala-bears = "*"
+click = "==6.6"
+pyyaml = "~=3.12"
 
 [packages]
 connexion = {extras = ["swagger-ui"],version = "==2.2.0"}
