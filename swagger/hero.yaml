@@ -10,15 +10,15 @@
           minimum: 0
           default: 100
       responses:
-          200:
-            description: Return heroes
-            schema:
-              type: object
-              properties:
-                heroes:
-                  type: array
-                  items:
-                    $ref: '#/definitions/HeroResult'
+        200:
+          description: Return heroes
+          schema:
+            type: object
+            properties:
+              heroes:
+                type: array
+                items:
+                  $ref: '#/definitions/HeroResult'
     post:
       tags: [Hero]
       summary: Create a Hero
@@ -28,16 +28,16 @@
           schema:
             $ref: '#/definitions/HeroPostRequest'
       responses:
-          200:
-            description: Return the saved hero
-            schema:
-              type: object
-              properties:
-                heroes:
-                  type: object
-                  $ref: '#/definitions/HeroResult'
-          401:
-            description: None object
+        201:
+          description: Return the saved hero
+          schema:
+            type: object
+            properties:
+              heroes:
+                type: object
+                $ref: '#/definitions/HeroResult'
+        401:
+          description: None object
 
   /hero/{id}:
     get:
@@ -46,13 +46,47 @@
       parameters:
         - $ref: '#/parameters/id'
       responses:
-          200:
-            description: Return a hero
-            schema:
-              type: object
-              properties:
-                heroes:
-                  type: object
-                  $ref: '#/definitions/HeroResult'
-          404:
-            description: Hero not found
+        200:
+          description: Return a hero
+          schema:
+            type: object
+            properties:
+              heroes:
+                type: object
+                $ref: '#/definitions/HeroResult'
+        404:
+          description: Hero not found
+    put:
+      tags: [Hero]
+      summary: Update Hero by Id
+      parameters:
+        - $ref: '#/parameters/id'
+        - name: hero
+          in: body
+          schema:
+            $ref: '#/definitions/HeroResult'
+      responses:
+        201:
+          description: Update a hero
+          schema:
+            type: object
+            properties:
+              contacts:
+                type: object
+                $ref: '#/definitions/HeroResult'
+        401:
+          description: Id is mandatory
+        404:
+          description: Hero not found
+    delete:
+      tags: [Hero]
+      summary: Delete Hero by Id
+      parameters:
+        - $ref: '#/parameters/id'
+      responses:
+        201:
+          description: Delete a hero
+        401:
+          description: Id is mandatory
+        404:
+          description: Hero not found

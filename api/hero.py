@@ -1,5 +1,5 @@
 from typing import List, Tuple
-#from functools import lru_cache
+# from functools import lru_cache
 
 from flask import jsonify
 
@@ -26,3 +26,15 @@ def post(hero: Hero) -> Tuple[Hero, int] or Tuple[str, int]:
     response = HeroService().save(hero)
 
     return response, 201
+
+
+def put(id: int, hero: Hero) -> Tuple[Hero, int] or Tuple[str, int]:
+    if not id or not hero:
+        return 'Not found', 404
+    return HeroService.update(id, hero), 200
+
+
+def delete(id: int) -> Tuple[str, int] or Tuple[None, int]:
+    if not id:
+        return 'Not found', 404
+    return HeroService.delete(id), 200

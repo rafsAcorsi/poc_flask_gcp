@@ -27,14 +27,21 @@ def create_app():
     application = app.app
     db.init_app(application)
 
-    @application.before_request
-    def before_request():
-        function = request.endpoint.replace('/api.', '').split('_')
-        module = '.'.join(function[0:2])
-        arg = function[-1]
-        method = (__import__ (module, fromlist=[arg]))
-        if 'cache_info' in dir(getattr(method, arg)):
-            print(getattr(method, arg).cache_info())
+    @application.route('/clear_cache')
+    def clear_cache():
+        from api.hero import search
+        return str(search.cache_clear())
+
+    # @application.before_request
+    # def before_request():
+    #     function = request.endpoint
+    #     if '/api./' not in function:
+    #         function = function.replace('/api.', '').split('_')
+    #         module = '.'.join(function[0:2])
+    #         arg = function[-1]
+    #         method = (__import__(module, fromlist=[arg]))
+    #         if 'cache_info' in dir(getattr(method, arg)):
+    #             print(getattr(method, arg).cache_info())
 
     return app
 

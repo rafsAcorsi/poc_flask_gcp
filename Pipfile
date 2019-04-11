@@ -20,6 +20,7 @@ PyMySQL = "*"
 alembic = "*"
 flask-sqlalchemy = "*"
 flask-script = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.7"

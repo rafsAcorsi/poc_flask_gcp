@@ -20,10 +20,10 @@
                   items:
                     $ref: '#/definitions/UniverseResult'
     post:
-      tags: [Hero]
-      summary: Create a Hero
+      tags: [Universe]
+      summary: Create a Universe
       parameters:
-        - name: hero
+        - name: universe
           in: body
           schema:
             $ref: '#/definitions/HeroPostRequest'
@@ -38,21 +38,3 @@
                   $ref: '#/definitions/HeroResult'
           401:
             description: None object
-
-  /hero/{id}:
-    get:
-      tags: [Hero]
-      summary: Get Hero by Id
-      parameters:
-        - $ref: '#/parameters/id'
-      responses:
-          200:
-            description: Return a hero
-            schema:
-              type: object
-              properties:
-                heroes:
-                  type: object
-                  $ref: '#/definitions/HeroResult'
-          404:
-            description: Hero not found
