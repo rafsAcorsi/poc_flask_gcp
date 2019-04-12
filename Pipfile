@@ -7,9 +7,17 @@ verify_ssl = true
 gevent = "==1.4.0"
 ipython = "*"
 pysqlite3 = "*"
-coala-bears = "*"
 click = "==6.6"
 pyyaml = "~=3.12"
+radon = "*"
+mccabe = "*"
+pep257 = "*"
+pydocstyle = "*"
+pep8 = "*"
+pycodestyle = "*"
+pyflakes = "*"
+pylint = "*"
+pytest = "*"
 
 [packages]
 connexion = {extras = ["swagger-ui"],version = "==2.2.0"}
@@ -21,6 +29,8 @@ alembic = "*"
 flask-sqlalchemy = "*"
 flask-script = "*"
 ipython = "*"
+pylava = "*"
+pytest-coverage = "*"
 
 [requires]
 python_version = "3.7"
